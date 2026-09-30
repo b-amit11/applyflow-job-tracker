@@ -1,0 +1,9 @@
+{
+  "manifest_version": 3,
+  "name": "ApplyFlow Job Capture",
+  "version": "1.0.0",
+  "description": "Save the current job posting to a local ApplyFlow tracker.",
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["http://localhost:3000/*"],
+  "action": { "default_title": "Save to ApplyFlow", "default_popup": "popup.html" }
+}

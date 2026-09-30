@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ApplyFlow | Job Application Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div>
+        <p class="eyebrow">APPLICATION ORGANIZER</p>
+        <h1>ApplyFlow</h1>
+        <p>Keep every opportunity, deadline, and next step in one place.</p>
+      </div>
+      <button class="primary" id="focus-form">+ Add application</button>
+    </header>
+
+    <main>
+      <div id="notice" class="notice hidden" role="status" aria-live="polite"></div>
+      <section class="stats" aria-label="Application statistics">
+        <article><span id="total-count">0</span><p>Total applications</p></article>
+        <article><span id="active-count">0</span><p>Active applications</p></article>
+        <article><span id="interview-count">0</span><p>Interviews</p></article>
+        <article><span id="offer-count">0</span><p>Offers</p></article>
+      </section>
+
+      <section class="layout">
+        <aside class="form-panel">
+          <h2 id="form-title">Add an application</h2>
+          <form id="application-form">
+            <input type="hidden" id="application-id" />
+            <label>Company<input id="company" required maxlength="80" placeholder="Example: Acme Inc." /></label>
+            <label>Role<input id="role" required maxlength="100" placeholder="Example: Software Engineer Intern" /></label>
+            <div class="two-columns">
+              <label>Stage
+                <select id="stage"><option>Applied</option><option>Screening</option><option>Interview</option><option>Offer</option><option>Rejected</option></select>
+              </label>
+              <label>Applied date<input id="applied-date" type="date" required /></label>
+            </div>
+            <label>Job link<input id="job-link" type="url" placeholder="https://..." /></label>
+            <label>Notes<textarea id="notes" maxlength="500" placeholder="Recruiter name, preparation notes, next step..."></textarea></label>
+            <div class="form-actions"><button class="primary" type="submit">Save application</button><button class="secondary hidden" id="cancel-edit" type="button">Cancel</button></div>
+          </form>
+        </aside>
+
+        <section class="applications-panel">
+          <div class="list-heading"><div><h2>Your applications</h2><p id="result-count">0 entries</p></div><div class="list-actions"><label class="secondary file-button">Import CSV<input id="csv-import" type="file" accept=".csv,text/csv" /></label><button class="secondary" id="reset-data">Reset sample data</button></div></div>
+          <div class="filters"><input id="search" type="search" placeholder="Search company or role" /><select id="stage-filter"><option value="All">All stages</option><option>Applied</option><option>Screening</option><option>Interview</option><option>Offer</option><option>Rejected</option></select></div>
+          <div id="application-list" class="application-list"></div>
+        </section>
+      </section>
+    </main>
+    <template id="application-template">
+      <article class="application-card">
+        <div class="card-top"><div><h3></h3><p class="role"></p></div><span class="stage"></span></div>
+        <p class="date"></p><p class="notes"></p><a class="job-link" target="_blank" rel="noreferrer">View job posting ↗</a>
+        <div class="card-actions"><select class="quick-stage"><option>Applied</option><option>Screening</option><option>Interview</option><option>Offer</option><option>Rejected</option></select><button class="edit">Edit</button><button class="delete">Delete</button></div>
+      </article>
+    </template>
+    <script src="app.js"></script>
+  </body>
+</html>
